@@ -38,7 +38,6 @@ export MODEL_NAME="all-mpnet-base-v2.zip"
 curl -O $MODEL_NAME https://public.ukp.informatik.tu-darmstadt.de/reimers/sentence-transformers/v0.2/all-mpnet-base-v2.zip 
 unzip $MODEL_NAME -d ./model_dir/sentence-encoder-model
 rm -rf $MODEL_NAME
-mv model_dir/all-mpnet-base-v2 model_dir/sentence-encoder-model
 ```
 **Note** : In local make sure the folder name is **sentence-encoder-model** inside model_dir folder.
 
