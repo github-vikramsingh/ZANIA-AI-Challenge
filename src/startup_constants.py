@@ -1,0 +1,12 @@
+APP_NAME = 'agent-document'
+PROJECT_ID_HEADER = "X-ProjectID"
+EMBEDDINGS_MODEL_NOT_AVAILABLE = "Embeddings model not available!!"
+GENERIC_ERROR = "Oops! We were not able to process your request."
+INVALID_PROJECT_ID = "Project ID not provided"
+DOCUMENT = "Document"
+METADATA = "metadata"
+CONTENT = "content"
+DOCUMENT_CACHE = 'Document_cache'
+STANDALONE_QUESTION = 'standalone_question'
+AGENTS = [DOCUMENT, DOCUMENT_CACHE]
+LLM = "LLM"

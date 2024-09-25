@@ -1,0 +1,16 @@
+__pycache__
+# Python compiled and object files will be removed
+*.pyc
+*.pyo
+
+# Application logs
+*.log
+
+# Configuration File
+*.yaml
+*.json
+
+# Editors
+.idea
+.vscode
+.DS*

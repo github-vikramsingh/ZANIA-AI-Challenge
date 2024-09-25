@@ -1,0 +1,27 @@
+# Fast API
+fastapi
+asyncio
+fastapi-pagination
+uvicorn
+pydantic
+pyyaml
+stop-words
+python-dotenv
+
+# Semantic Domain
+sentence-transformers==2.2.2
+
+# LLM
+langchain
+langchain-community
+langchain-weaviate
+langchain-openai
+openai
+
+# Weaviate
+pypdf
+weaviate-client
+
+tiktoken
+python-multipart
+
