@@ -7,7 +7,6 @@
 **Swagger**: <http://localhost:9002/docs#/>
 
 **Download Embedding Model, SBERT**: <https://public.ukp.informatik.tu-darmstadt.de/reimers/sentence-transformers/v0.2/all-mpnet-base-v2.zip>
-
 ---
 
 The project contains all the elements to perform conversation with documents. Currently, it supports Pdf documents only.
@@ -33,52 +32,25 @@ pip install -r requirements.txt
 ```
 
 #### SBERT : Run below commands on terminal to download and setup the model.
+
 ```console
 export MODEL_NAME="all-mpnet-base-v2.zip"
 curl -O $MODEL_NAME https://public.ukp.informatik.tu-darmstadt.de/reimers/sentence-transformers/v0.2/all-mpnet-base-v2.zip 
 unzip $MODEL_NAME -d ./model_dir/sentence-encoder-model
 rm -rf $MODEL_NAME
 ```
+
 **Note** : In local make sure the folder name is **sentence-encoder-model** inside model_dir folder.
 
-
-
 ### Set OPENAI_API_KEY
+
 ```consol
 OPENAI_API_KEY=" ";
 ```
+
 **Note** : OPENAI_API_KEY is at 2 positions in `agent-document.yml` file.
 
 Update the YAML file `agent-document.yml` as per requirements for local development
-
-
-### To use Vector database in Embedded mode.
-* Embedded mode is default for local development
-* Create a data_weaviate/cache folder at the root level of the project.
-
-## Sentence encoder model : SBERT
-
-#### all-mpnet-base-v2
-This is a [sentence-transformers](https://www.SBERT.net) model: It maps sentences & paragraphs to a 768 dimensional dense vector space and can be used for tasks like clustering or semantic search.
-
-#### Usage (Sentence-Transformers)
-Using this model becomes easy when you have [sentence-transformers](https://www.SBERT.net) installed:
-
-```
-pip install -U sentence-transformers
-```
-
-Then you can use the model like this:
-```python
-from sentence_transformers import SentenceTransformer
-sentences = ["This is an example sentence", "Each sentence is converted"]
-
-model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
-embeddings = model.encode(sentences)
-print(embeddings)
-```
-
-**Note** : In local make sure the folder name is **sentence-encoder-model** inside model_dir folder.
 
 ### Running in PyCharm
 
@@ -86,10 +58,29 @@ Run or Debug `src.main.py`
 
 ---
 
+### To use Vector database in Embedded mode.
+
+* Embedded mode is default for local development
+* Create a data_weaviate/cache folder at the root level of the project.
+
+## Sentence encoder model : SBERT
+
+#### all-mpnet-base-v2
+
+This is a [sentence-transformers](https://www.SBERT.net) model: It maps sentences & paragraphs to a 768 dimensional
+dense vector space and can be used for tasks like clustering or semantic search.
+
+#### Usage (Sentence-Transformers)
+
+Using this model becomes easy when you have [sentence-transformers](https://www.SBERT.net) installed:
+
+```
+pip install -U sentence-transformers
+```
+
 ### Basic API Usage
 
 * Generate Embeddings and Answer Suer query for a pdf
-
 
 ### Sample API Output
 
@@ -97,7 +88,6 @@ Run or Debug `src.main.py`
 Question: What is vacation policy at Zania?
 ```
 
-#### SBERT : Run below commands on terminal to download and setup the model.
 ```console
 [{
     "question": " What is their vacation policy?",
@@ -143,35 +133,42 @@ Question: What is vacation policy at Zania?
 # **Markdown Formatted Answer from LLM**
 
 ## Question
+
 What is vacation policy at Zania?
 
 #### Answer
+
 **Vacation Policy of Zania, Inc.**
-- **Eligibility**: 
-  - All **full-time regular employees** are eligible to receive vacation time:
-    - **Immediately upon hire**
-    - **Upon completion of the introductory period**
-    - **After completing a specified number of days of employment**
+
+- **Eligibility**:
+    - All **full-time regular employees** are eligible to receive vacation time:
+        - **Immediately upon hire**
+        - **Upon completion of the introductory period**
+        - **After completing a specified number of days of employment**
 - **Vacation Accrual**:
-  - Vacation is calculated based on:
-    - **Your work anniversary year**
-    - **The calendar year**
-    - **The fiscal year** (specific dates to be determined by the company)
-  - **Options for Vacation Accrual**:
-    - **Option 1**: 
-      - Vacation is granted in a **lump sum** based on your **length of service**.
-      - Vacation granted during your first year will be **prorated** based on your hire date.
-    - **Option 2**: 
-      - Eligible employees will **accrue** a specified number of hours/days/weeks of vacation for every period worked.
-      - There is a **maximum accrual limit**; once reached, no additional vacation will accrue until some is used.
+    - Vacation is calculated based on:
+        - **Your work anniversary year**
+        - **The calendar year**
+        - **The fiscal year** (specific dates to be determined by the company)
+    - **Options for Vacation Accrual**:
+        - **Option 1**:
+            - Vacation is granted in a **lump sum** based on your **length of service**.
+            - Vacation granted during your first year will be **prorated** based on your hire date.
+        - **Option 2**:
+            - Eligible employees will **accrue** a specified number of hours/days/weeks of vacation for every period
+              worked.
+            - There is a **maximum accrual limit**; once reached, no additional vacation will accrue until some is used.
 - **Requesting Vacation**:
-  - Employees must request vacation from their **Manager** as far in advance as possible, but at least **a specified number of days/weeks** in advance.
-  - The company will generally grant requests for vacation when possible, considering **business needs**.
-  - In cases where multiple employees request the same time off, **length of employment**, **seniority**, or a **collective bargaining agreement** may determine priority.
+    - Employees must request vacation from their **Manager** as far in advance as possible, but at least **a specified
+      number of days/weeks** in advance.
+    - The company will generally grant requests for vacation when possible, considering **business needs**.
+    - In cases where multiple employees request the same time off, **length of employment**, **seniority**, or a *
+      *collective bargaining agreement** may determine priority.
 - **Usage of Vacation**:
-  - Employees are encouraged to use their vacation time.
-  - Vacation must be taken in increments of at least **a specified number of hours/days**.
+    - Employees are encouraged to use their vacation time.
+    - Vacation must be taken in increments of at least **a specified number of hours/days**.
 - **Leave of Absence**:
-  - The company may require employees to use any **unused vacation** during disability or family medical leave, or any other leave of absence, where permissible under local, state, and federal law.
+    - The company may require employees to use any **unused vacation** during disability or family medical leave, or any
+      other leave of absence, where permissible under local, state, and federal law.
 
 
