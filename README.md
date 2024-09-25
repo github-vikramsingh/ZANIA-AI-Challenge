@@ -42,13 +42,13 @@ rm -rf $MODEL_NAME
 **Note** : In local make sure the folder name is **sentence-encoder-model** inside model_dir folder.
 
 
-```
-### Set environment Variables and OPENAI API KEY
 
-```console
-ENVIRONMENT_NAME=local;
-
+### Set OPENAI_API_KEY
+```consol
+OPENAI_API_KEY=" ";
 ```
+**Note** : OPENAI_API_KEY is at 2 positions in `agent-document.yml` file.
+
 Update the YAML file `agent-document.yml` as per requirements for local development
 
 
