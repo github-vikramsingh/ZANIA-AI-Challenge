@@ -7,6 +7,7 @@
 **Swagger**: <http://localhost:9002/docs#/>
 
 **Download Embedding Model, SBERT**: <https://public.ukp.informatik.tu-darmstadt.de/reimers/sentence-transformers/v0.2/all-mpnet-base-v2.zip>
+
 ---
 
 The project contains all the elements to perform conversation with documents. Currently, it supports Pdf documents only.
