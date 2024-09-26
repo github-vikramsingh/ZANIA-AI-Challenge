@@ -8,6 +8,10 @@
 
 **Download Embedding Model, SBERT**: <https://public.ukp.informatik.tu-darmstadt.de/reimers/sentence-transformers/v0.2/all-mpnet-base-v2.zip>
 
+**App Demo Video** : <https://drive.google.com/file/d/1A56MEMFjbklzNK1vHCm-ImBjm-ZqLGiv/view?usp=sharing>
+
+**Document Report** : <https://drive.google.com/file/d/1onMBslzT1n4Y7ITbMEXia8af7fbf1fNf/view?usp=drive_link>
+
 ---
 
 The project contains all the elements to perform conversation with documents. Currently, it supports Pdf documents only.
@@ -20,19 +24,21 @@ The project contains all the elements to perform conversation with documents. Cu
 * conda
 * SBERT : Sentence Encoder Model
 
-### Create Virtual Environment
+# Steps to setup/run the app on local
+
+### Step 1: Create Virtual Environment
 
 ```console
  conda create -n agent-document python=3.10.14
 ```
 
-### Install Dependencies
+### Step 2: Install Dependencies
 
 ```console
 pip install -r requirements.txt
 ```
 
-#### SBERT : Run below commands on terminal to download and setup the model.
+### Step 3: Run below commands on terminal to download and setup the SBERT model.
 
 ```console
 export MODEL_NAME="all-mpnet-base-v2.zip"
@@ -43,23 +49,24 @@ rm -rf $MODEL_NAME
 
 **Note** : In local make sure the folder name is **sentence-encoder-model** inside model_dir folder.
 
-### Set OPENAI_API_KEY
+### Step 4: Set OPENAI_API_KEY & SLACK_TOKEN in `agent-document.yml` file.
 
 ```consol
 OPENAI_API_KEY=" ";
+SLACK_TOKEN="";
 ```
 
 **Note** : OPENAI_API_KEY is at 2 positions in `agent-document.yml` file.
 
 Update the YAML file `agent-document.yml` as per requirements for local development
 
-### Running in PyCharm
+### Step 5: Run main.py and open swagger link
 
 Run or Debug `src.main.py`
-
+app_swagger : http://localhost:9002/docs#/
 ---
 
-### To use Vector database in Embedded mode.
+## To use Vector database in Embedded mode.
 
 * Embedded mode is default for local development
 * Create a data_weaviate/cache folder at the root level of the project.
