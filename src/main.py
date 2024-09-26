@@ -15,7 +15,6 @@ from src.schemas.pydantic_models import SBertConfig
 
 from src.agent.utils import AgentException as SourceException
 from src.middleware import add_process_time, source_exception_handler
-from src.startup_constants import APP_NAME
 
 import warnings
 

@@ -1,9 +1,9 @@
 import os
 from logging import getLogger
 from fastapi import File, UploadFile
-from src.config.config_client import get_config
+from slack_sdk import WebClient
+from src.config.config_client import config
 from langchain_core.documents import Document
-from langchain_openai import OpenAIEmbeddings
 
 logger = getLogger(__name__)
 
@@ -26,6 +26,25 @@ Answer:
 """
 
 
+async def slack_message_post(messages: list[dict]):
+    try:
+        client = WebClient(token=config.get("SLACK_TOKEN", None))
+        for message in messages:
+            if llm_answer := message.get("answer"):
+                client.chat_postMessage(
+                    channel=config.get("SLACK_CHANNEL", "all-slack"),
+                    text="\n".join([f"\n\nQuestion: *{message.get('question')}*",
+                                    llm_answer]).replace("**", "*").replace("- ", "• "),
+                    username=config.get("SLACK_USERNAME", "Team Zania"),
+                )
+                logger.info(f"Slack Message posted for question: {message.get('question')}")
+            else:
+                logger.error(f"Empty LLM Message for question: {message.get('question')}")
+                continue
+    except Exception as e:
+        logger.error(f"SLACK : Failed while posting messages to, {e}", exc_info=True)
+
+
 def get_embeddings_model():
     from src.main import sentence_encoder_models
 
@@ -33,7 +52,7 @@ def get_embeddings_model():
 
 
 def save_upload_file(uploaded_file: UploadFile = File(...), overwrite: bool = False):
-    file_location = f"{get_config().get('DOWNLOAD_FOLDER', 'download_data/')}/{uploaded_file.filename}"
+    file_location = f"{config.get('DOWNLOAD_FOLDER', 'download_data/')}/{uploaded_file.filename}"
     if os.path.exists(file_location) and overwrite:
         logger.info(f"The file '{file_location}' exists., Overwriting It")
         os.remove(file_location)

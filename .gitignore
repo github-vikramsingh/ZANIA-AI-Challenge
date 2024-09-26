@@ -148,6 +148,8 @@ Pipfile.lock
 testing/loadtesting/requests/*
 
 data_weaviate/
+model_dir/
+download_data/
 *.zip
 notebooks/
 *.ipynb
