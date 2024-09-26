@@ -43,6 +43,7 @@ pip install -r requirements.txt
 ```console
 export MODEL_NAME="all-mpnet-base-v2.zip"
 curl -O $MODEL_NAME https://public.ukp.informatik.tu-darmstadt.de/reimers/sentence-transformers/v0.2/all-mpnet-base-v2.zip 
+mkdir -p model_dir/sentence-encoder-model
 unzip $MODEL_NAME -d ./model_dir/sentence-encoder-model
 rm -rf $MODEL_NAME
 ```
