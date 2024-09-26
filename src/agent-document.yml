@@ -12,6 +12,10 @@ SBERT_CONFIG:
   model_path: model_dir/sentence-encoder-model
   version: all-mpnet-base-v2
 
+SLACK_TOKEN: ""
+SLACK_CHANNEL: "document-agents"
+SLACK_USERNAME: "Team Zania"
+
 OPENAI_API_KEY: ""
 
 OPENAI_GPT_4o_MINI:
